@@ -1,0 +1,189 @@
+---
+# Source: opa/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: opa-fgd-apa
+  labels:
+    app: opa-fgd-apa
+    chart: opa-1.14.4
+    release: "opa-fgd-apa"
+    heritage: "Helm"
+---
+# Source: opa/templates/secrets.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: opa-fgd-apa-config
+  labels:
+    app: opa-fgd-apa
+    chart: "opa-1.14.4"
+    release: "opa-fgd-apa"
+    heritage: "Helm"
+type: Opaque
+data:
+  config.yaml: YnVuZGxlczoKICBxdWlja3N0YXJ0OgogICAgcmVzb3VyY2U6IC9idW5kbGVzL2hlbG0ta3ViZXJuZXRlcy1xdWlja3N0YXJ0CiAgICBzZXJ2aWNlOiBjb250cm9sbGVyCmRlZmF1bHRfZGVjaXNpb246IC9oZWxtX2t1YmVybmV0ZXNfcXVpY2tzdGFydC9tYWluCnNlcnZpY2VzOgogIGNvbnRyb2xsZXI6CiAgICB1cmw6IGh0dHBzOi8vd3d3Lm9wZW5wb2xpY3lhZ2VudC5vcmc=
+---
+# Source: opa/templates/webhookconfiguration.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: opa-fgd-apa-cert
+  labels:
+    app: opa-fgd-apa
+    chart: "opa-1.14.4"
+    release: "opa-fgd-apa"
+    heritage: "Helm"
+type: Opaque
+data:
+
+  tls.crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURCakNDQWU2Z0F3SUJBZ0lRVG1DWWttbVhTV1phakNlS3l4emRoREFOQmdrcWhraUc5dzBCQVFzRkFEQWIKTVJrd0Z3WURWUVFERXhCdmNHRXRZV1J0YVhOemFXOXVMV05oTUI0WERUSXdNRGt5TVRFMU1URXpNRm9YRFRNdwpNRGt4T1RFMU1URXpNRm93SWpFZ01CNEdBMVVFQXhNWGIzQmhMV1puWkMxaGNHRXVaR1ZtWVhWc2RDNXpkbU13CmdnRWlNQTBHQ1NxR1NJYjNEUUVCQVFVQUE0SUJEd0F3Z2dFS0FvSUJBUUROZ3VBK0VXQk5jYWpuQTh4VjlRV2QKR1ZpOEFzc1ZwTU9ZQ1lQeGcrYnV1VEg5Y0NxWmpKYzNDY3N1YlNPTXVIQmcwYTlxWGJqV3Z6d0Y3NlZaNm10VQpBdHFvTUlDVGhtWGsyMVl4YmZBYmdZMnZsRUVpb0NtRWRqaHduUk15dTBGTVNUTDN4a2l3SmdwVWJEV0RFUlRmCmxmS3hKRlJGSUczdElSQzdTd0paaC9vTlNRT2N3ZTZHRmJCbC9IUkNFbmNkRFB0THJ5N1ZYb3ZJQ1FPblNIWjEKOGtOcTNZVk95cGI4blFYRmRqTkhVcjVrTXI4WXA3WWU4UlhOMW1QZU5QajluN0gxTmc4bmRVbkY2d2EyZ0F1ZApYZEFUVERHYzZKSFc3N21YaDROWWxRUnQ4Y2c0UzdwVGNDUkVkNnU0cXk2Rm9uY29udkxwbkxQYk1oUlhDTEw1CkFnTUJBQUdqUHpBOU1BNEdBMVVkRHdFQi93UUVBd0lGb0RBZEJnTlZIU1VFRmpBVUJnZ3JCZ0VGQlFjREFRWUkKS3dZQkJRVUhBd0l3REFZRFZSMFRBUUgvQkFJd0FEQU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUFVRlp6bEI0SQpCTGgxTkRpbGQ3V2VsZHlmcll1L0dzRFJpRnc3bEJicjB5bXppMjZDVFRCeSsyaGd1V0hqSStBczZwVHVGcGs1CkdqV1g3RXNxcUx1emRuQkpJQ20rczJkK0FETmh2WS9sNng5OXpXMUh0a0hJTWFUWDVUaG9VQVN1OFJKa1gyMW4KaEpyTWhvdnhJU09KbG1yTDQwMWVyNzdPSm52QVQ0ZHlhV1BoVGJXM05RUWhtMnBRenM2aFBFbHRyTEh2WUNjUgphSDhlT3B4VEhnVFQzOVhRczhucitnd2Y0dGxmVS9sblg0b0xHRmZxNTdoVHZQR0dINTc4MzA2K3Z4T0c5cE1qCnRjb3FCbEF5d1F1ZHZ3UnVQSlNpTmpSSDNXSGJWelhiZm1HVDl5eU1VZm9YbGhQdlJCUmNJUytJTXZJckUxTHEKQ0s4SXpoTW5meE5PdGc9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+  tls.key: LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFb3dJQkFBS0NBUUVBellMZ1BoRmdUWEdvNXdQTVZmVUZuUmxZdkFMTEZhVERtQW1EOFlQbTdya3gvWEFxCm1ZeVhOd25MTG0wampMaHdZTkd2YWwyNDFyODhCZStsV2VwclZBTGFxRENBazRabDVOdFdNVzN3RzRHTnI1UkIKSXFBcGhIWTRjSjBUTXJ0QlRFa3k5OFpJc0NZS1ZHdzFneEVVMzVYeXNTUlVSU0J0N1NFUXUwc0NXWWY2RFVrRApuTUh1aGhXd1pmeDBRaEozSFF6N1M2OHUxVjZMeUFrRHAwaDJkZkpEYXQyRlRzcVcvSjBGeFhZelIxSytaREsvCkdLZTJIdkVWemRaajNqVDQvWit4OVRZUEozVkp4ZXNHdG9BTG5WM1FFMHd4bk9pUjF1KzVsNGVEV0pVRWJmSEkKT0V1NlUzQWtSSGVydUtzdWhhSjNLSjd5Nlp5ejJ6SVVWd2l5K1FJREFRQUJBb0lCQUZBZXErbkd3SEt3MHhadApScVprUmZIL1JiYldwL0lpTUJiLzdxNmpxODU1Nk9GVGIyZzVoV0p4c1FMQ2pjOTR3R2NlbUhLeFl6UmxqYk1LCndMNFRSQkNXcEVSWjFHYXZTTjQySEo1Y3EvVXRSdDJpd05vTTh1S3ZiRVdMRjBiNTlmVVZ2SWNZaUpJVDRvY1QKUUxGK1lWTGhsS0kyOVp1Vmp3V1psSHBRUGZSRStlZjFqbmhwN2xtcU9RRW4wbnBQRzFiRVdrbXZGTUdhaUdzWAoxaG5xV3JJZFVya3ZiUHVFeUlmZllLRW9hdnl6NWIva2dZR0w2eGsyVHZWNHRtMDdsQmx0REJxeGdmTUJrbFUzCkN4SUpuam50Q2tSUDRjS1NjdWdpYUtPZmdmaXhvVjhwOHN1LzhqOTM4QXdKbmh4Y0Y3RVYwMWdYZFV5UFZXcVAKdEgxOElGa0NnWUVBN1E5VFhNeHp2cks5Yk9mbFhNUkZETVAyaGtLeFFFUk1UNzJqdlNUcU1Pc0pLdXZEdUZ6MgpIMGJucmtEL0RaTi83OXFUVTV3S21XMTBjdnd5dFRmUmo0cnFTckRSckoramF0TEZSY2NjYUcwS3ZSTDFWWU8yCi9RSHhTVWpvMkNjUFRCT21iTmVhYUVqU2lXQitGNWJrcWh0Q3dBcmc2alpRRFBuODE4QldEUjhDZ1lFQTNlNUcKT1lWQk85K0YySkhtajRaSWVyT0I1WDZSWUI4aXhFQVpFeHlCTnJxZm43SUo3WW56Qy80cnVtS2IyNGEvSDdLOQprSlFsTzBML09yZkFpaU9pQlZldk1pcUJaU2FJMnRxYkZIZXJJbXY5QmpQckpnN3VlYnUySEJVUTREY0pmekZ3Ci9haGRmeXpydVBNUlYvUmlnRnNXdjUwVlFCdkIwaXBSelV5bHBPY0NnWUVBNWdLTXUrbVVGRitROCs0ODJUbUcKVmRCOWpkOS80LzlnbTY1QkJQQ2dXajV5Y3JhMi9GY1daMXFBeU00L3FvaUhCYzVxVENHSEZ6N2dVZ0Rwb25NNgpYYkJIaTVqc21EVjhkZFZ6bXpTS0Y3aFZSd2J5QzdyMC9aKzQ0WVpnaGZuQUdleW0rY3hvQU85SGVBdXJ6RytZCkJvVFV5MGpDMmYxQXhwWjRBVTZaTDdrQ2dZQkw0WlNSUmthdnVoV0JueUUrSWFQV2tGbnhwZnorNktaeWc1Z1AKT01mVmRxbnRhR3FNbFlaTXEzTTRIMDg3R0M5eEh5UkJzdVdvQlpoTzgxVVo1bVVYZm91Z2szZjZwZHBWT2ptYwpIZTZkcmw2dEtFTldsL1JpR3hTQk5aSzNseG5nSzM5K3UzcDhhVmVQdlV4SXpuNS9kS1dxam9NZGtHQU5BL3RFClB0akVNUUtCZ0dyelFZODVOT0ZzcWFmMkFiNW5xVEJvVncrNnNRelA2cWM3TU8zY3pzc0FKMUM2Z3NBbnVzVG8KMklmcjlHOW1jdXhOOEV4b1o5Vzc5RmpCbHZZOWp2VVh0cU8welk3aHdnVlFuZTlSbTZXNVBmRGd5RjRPQlJnMgo5UHRON0twZ1YvNDhWMjJUUHBhSHFjT0pVdi90UC9YcFFMcC9wNjFRZ2dtZzhpOFdwNzRoCi0tLS0tRU5EIFJTQSBQUklWQVRFIEtFWS0tLS0tCg==
+
+---
+# Source: opa/templates/service.yaml
+kind: Service
+apiVersion: v1
+metadata:
+  name: opa-fgd-apa
+  labels:
+    app: opa-fgd-apa
+    chart: "opa-1.14.4"
+    release: "opa-fgd-apa"
+    heritage: "Helm"
+spec:
+  selector:
+    app: opa-fgd-apa
+  ports:
+  - name: https
+    protocol: TCP
+    port: 443
+    targetPort: 443
+---
+# Source: opa/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: opa-fgd-apa
+  labels:
+    app: opa-fgd-apa
+    chart: "opa-1.14.4"
+    release: "opa-fgd-apa"
+    heritage: "Helm"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: opa-fgd-apa
+  template:
+    metadata:
+      annotations:
+        checksum/certs: 5e13a3d361ef218ed30922b9175d1d4163de7cbd2423b44ae2d7a2936e3fc943
+        checksum/config: b1ea09588bdfd15d40102d74327588812456c09a61be83482d29dee674e54020
+      labels:
+        app: opa-fgd-apa
+      name: opa-fgd-apa
+    spec:
+      initContainers:
+        - name: initpolicy
+          image: openpolicyagent/kube-mgmt:0.10
+          imagePullPolicy: IfNotPresent
+          resources:
+            {}
+          command:
+          - /bin/sh
+          - -c
+          - |
+            tr -dc 'A-F0-9' < /dev/urandom | dd bs=1 count=32 2>/dev/null > /bootstrap/mgmt-token
+            TOKEN=`cat /bootstrap/mgmt-token`
+            cat > /bootstrap/authz.rego <<EOF
+            package system.authz
+            default allow = false
+            # Allow anonymous access to the default policy decision.
+            allow { input.path = [""]; input.method = "POST" }
+            allow { input.path = [""]; input.method = "GET" }
+            # This is only used for health check in liveness and readiness probe
+            allow { input.path = ["health"]; input.method = "GET" }
+            allow { input.identity == "$TOKEN" }
+            EOF
+          volumeMounts:
+            - name: bootstrap
+              mountPath: /bootstrap
+      containers:
+        - name: opa
+          ports:
+          - name: https
+            containerPort: 443
+          image: openpolicyagent/opa:0.15.1
+          imagePullPolicy: IfNotPresent
+          resources:
+            {}
+          args:
+            - "run"
+            - "--server"
+            - "--config-file=/config/config.yaml"
+            - "--tls-cert-file=/certs/tls.crt"
+            - "--tls-private-key-file=/certs/tls.key"
+            - "--addr=0.0.0.0:443"
+            - "--log-level=info"
+            - "--log-format=text"
+            - "--authentication=token"
+            - "--authorization=basic"
+            - "--ignore=.*"
+            - "--addr=http://127.0.0.1:8181"
+            - "/bootstrap"
+          volumeMounts:
+            - name: certs
+              readOnly: true
+              mountPath: /certs
+            - name: config
+              readOnly: true
+              mountPath: /config
+            - name: bootstrap
+              readOnly: true
+              mountPath: /bootstrap
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 443
+              scheme: HTTPS
+            initialDelaySeconds: 3
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 443
+              scheme: HTTPS
+            initialDelaySeconds: 3
+            periodSeconds: 5
+        - name: mgmt
+          image: openpolicyagent/kube-mgmt:0.10
+          imagePullPolicy: IfNotPresent
+          resources:
+            {}
+          args:
+            - --opa-auth-token-file=/bootstrap/mgmt-token
+            - --opa-url=http://127.0.0.1:8181/v1
+            - --replicate-path=kubernetes
+            - --enable-data=false
+            - --enable-policies=false
+          volumeMounts:
+            - name: bootstrap
+              readOnly: true
+              mountPath: /bootstrap
+      serviceAccountName: opa-fgd-apa
+      volumes:
+        - name: certs
+          secret:
+            secretName: opa-fgd-apa-cert
+        - name: config
+          secret:
+            secretName: opa-fgd-apa-config
+        - name: bootstrap
+          emptyDir: {}
+      affinity:
+        {}
+      nodeSelector:
+        {}
+      tolerations:
+        []

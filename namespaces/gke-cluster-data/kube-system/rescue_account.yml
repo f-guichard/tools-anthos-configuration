@@ -1,0 +1,31 @@
+#&rescue_account_name rescue-account
+#&rescue_ns_name kube-system
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  annotations:
+    configmanagement.gke.io/cluster-selector: metallikaas-prod-nd1
+  name: rescue-account
+  namespace: kube-system
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  annotations:
+    configmanagement.gke.io/cluster-selector: gcp-staging-west1
+  name: rescue-account
+  namespace: kube-system
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: RoleBinding
+metadata:
+  name: rescue-admin-access
+  namespace: kube-system
+subjects:
+- kind: ServiceAccount
+  name: rescue-account
+  namespace: kube-system
+roleRef:
+  kind: Role
+  name: admin
+  apiGroup: rbac.authorization.k8s.io

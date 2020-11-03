@@ -1,0 +1,42 @@
+#&rescue_account_name db-ops
+#&rescue_ns_name cassandra
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  annotations:
+    configmanagement.gke.io/cluster-selector: metallikaas-prod-nd1
+  name: db-ops
+  namespace: cassandra
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  annotations:
+    configmanagement.gke.io/cluster-selector: gcp-staging-west1
+  name: db-ops
+  namespace: cassandra
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: RoleBinding
+metadata:
+  name: rescue-admin-access
+  namespace: cassandra
+subjects:
+- kind: ServiceAccount
+  name: db-ops
+  namespace: cassandra
+roleRef:
+  kind: Role
+  name: cassandra-operator
+  apiGroup: rbac.authorization.k8s.io
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+   namespace: cassandra
+   name: cassandra-operator
+rules:
+  - apiGroups: [""]
+    resources: ["pods", "deployments", "services", "pvc"]
+    verbs: ["get", "list", "create", "update", "delete"]
+

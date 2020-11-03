@@ -1,0 +1,9 @@
+kind: ClusterSelector
+apiVersion: configmanagement.gke.io/v1
+metadata:
+  name: metallikaas-prod-nd1
+spec:
+  selector:
+    matchLabels:
+      datacenter: normandie-1
+      environnement: production
