@@ -1,0 +1,76 @@
+---
+# Source: opa/templates/mgmt-clusterrole.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app: opa
+    chart: opa-1.14.4
+    heritage: Helm
+    release: opa-fgd-apa
+    component: mgmt
+  name: opa-fgd-apa-mgmt
+rules:
+  []
+---
+# Source: opa/templates/mgmt-clusterrolebinding.yaml
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  labels:
+    app: opa
+    chart: opa-1.14.4
+    heritage: Helm
+    release: opa-fgd-apa
+    component: mgmt
+  name: opa-fgd-apa-mgmt
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: opa-fgd-apa-mgmt
+subjects:
+  - kind: ServiceAccount
+    name: opa-fgd-apa
+    namespace: default
+
+---
+# Source: opa/templates/webhookconfiguration.yaml
+kind: ValidatingWebhookConfiguration
+apiVersion: admissionregistration.k8s.io/v1beta1
+metadata:
+  name: opa-fgd-apa
+  annotations:
+  labels:
+    app: opa-fgd-apa
+    chart: "opa-1.14.4"
+    release: "opa-fgd-apa"
+    heritage: "Helm"
+webhooks:
+  - name: webhook.openpolicyagent.org
+    namespaceSelector:
+      matchExpressions:
+      - key: openpolicyagent.org/webhook
+        operator: NotIn
+        values:
+        - ignore
+
+    failurePolicy: Ignore
+    rules:
+      - apiGroups:
+        - '*'
+        apiVersions:
+        - '*'
+        operations:
+        - '*'
+        resources:
+        - '*'
+    clientConfig:
+
+
+      caBundle: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURBekNDQWV1Z0F3SUJBZ0lSQUtlQ3FpYngwV3BGMUZKRnNrVVlXbTR3RFFZSktvWklodmNOQVFFTEJRQXcKR3pFWk1CY0dBMVVFQXhNUWIzQmhMV0ZrYldsemMybHZiaTFqWVRBZUZ3MHlNREE1TWpFeE5URXhNekJhRncwegpNREE1TVRreE5URXhNekJhTUJzeEdUQVhCZ05WQkFNVEVHOXdZUzFoWkcxcGMzTnBiMjR0WTJFd2dnRWlNQTBHCkNTcUdTSWIzRFFFQkFRVUFBNElCRHdBd2dnRUtBb0lCQVFDMnBYYjB6OHhpaEZYcG0zQWd2amFuczFOTDg4WXcKYjUzOVN2N0RuUFY1bmNncGpzanNLYlNVTUliL2poYnRoam83WU50eDU2bFdvdndraldiaGJFbUJXQi9mN0wxUQpiakFjZFlzZ3Ria1pmTHEyYzc2bFZZVFNlRDYxSmpBRjdYbVFBVTZ2b0VJaWFCMWt3UWNmVEd2RVlJMncxeElPCitidWp6T1BySEpvMi9IT3dNcDZXREgydC9mTmQ3anBNU0FYSmw2aGE2WTAwanVDUEhCSlN5RjhjT3Y3bFlrMTQKNnlraUZzNDFISllaazZjTERTSm9HbzN0OEJPNXhmQitYbzM2cnMraTlEbGJjT2VWRW5DNG5pNzlBYkNrQ1piWgpIL2dWdXgzQ1dPOWFTemdSZ1lTRmF6TUFsMjZSbzV5WDNHVFQ3YkVxTU5PVmJidXdmQld1WmlJZkFnTUJBQUdqClFqQkFNQTRHQTFVZER3RUIvd1FFQXdJQ3BEQWRCZ05WSFNVRUZqQVVCZ2dyQmdFRkJRY0RBUVlJS3dZQkJRVUgKQXdJd0R3WURWUjBUQVFIL0JBVXdBd0VCL3pBTkJna3Foa2lHOXcwQkFRc0ZBQU9DQVFFQUp3d1kwNGt2MmhPNgpINURUU3Qvc2piKy9XaDhrYkRZd3FXSXBMTmgra0xWS1JUVW1kakJ2WGhkRTdtRU9MNytWUUpSTE9jMXN0SWlVCk1uZm9DWkU3L2I3SXBpQnFFcXhkMGhzcjBMRTFBbmt0MTZYMUZ1dEVER2IvZXh1V1o3M3p0Uk5qdlFVNnNDMGsKK1VaOWhNRERFWXM0M2JVSndTUVNrRk1iOHdzc2lyZ1FRZ1RjamgzTDRjTGlENTRITVc4aWNFb3QyR0ZNVmk1cwpzWjU0cncvMjUvdFhQdWxwV1dxOFpwd3RHdkRNdjVnYXlzeFlQSkVxOUlOdk1nek1tTWhNdnZjSWZFZTNpekdqCkF2OWcraEF1T0t3Mm9uT0ZJZnFvK25Dbll3NnlwU0dnYUp1ZU9ZK1pQeDBLRW9Md2JaQmhucHNqcVl1dk1wUW0KKytGdE0wZ0djQT09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
+
+
+      service:
+        name: opa-fgd-apa
+        namespace: default
+    sideEffects: Unknown

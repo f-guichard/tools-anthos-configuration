@@ -1,0 +1,30 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: apj-front
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: apj-back
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: data-prod-anonymous-sets
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: data-compliancy-runtime-checks
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: data-rgpd-checks
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: data-anonymizer

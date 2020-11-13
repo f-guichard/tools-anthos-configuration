@@ -1,0 +1,22 @@
+---
+kind: Cluster
+apiVersion: clusterregistry.k8s.io/v1alpha1
+metadata:
+  name: metallikaas-nd1-salle3
+  labels:
+    environnement: production
+    operators: desi-xaas
+    datacenter: normandie-1
+    salle: "3"
+    external: "false"
+---
+kind: Cluster
+apiVersion: clusterregistry.k8s.io/v1alpha1
+metadata:
+  name: metallikaas-nd1-salle4
+  labels:
+    environnement: production
+    operators: desi-xaas
+    datacenter: normandie-1
+    salle: "4"
+    external: "false"
