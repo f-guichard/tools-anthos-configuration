@@ -3,8 +3,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: helloworld-v1
-    labels:
-      version: v1
+  labels:
+    version: v1
 spec:
   replicas: 1
   selector:
@@ -31,8 +31,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: helloworld-v2
-    labels:
-      version: v2
+  labels:
+    version: v2
 spec:
   replicas: 1
   selector:
