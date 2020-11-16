@@ -8,25 +8,25 @@ metadata:
 spec:
   rules:
   - http:
-    paths:
-    - path: /api
-      backend:
-        serviceName: api
-        servicePort: 5000
-    - path: /data-logging
-      backend:
-        serviceName: data-logging
-        servicePort: 5000
-    - path: /nifi-trackers
-      backend:
-        serviceName: nifi-trackers
-        servicePort: 5000
-    - path: /serializer
-      backend:
-        serviceName: serializer
-        servicePort: 5000
-    - path: /*
-      backend:
-        serviceName: helloworld
-        servicePort: 5000
+      paths:
+      - path: /api
+        backend:
+          serviceName: api
+          servicePort: 5000
+      - path: /data-logging
+        backend:
+          serviceName: data-logging
+          servicePort: 5000
+      - path: /nifi-trackers
+        backend:
+          serviceName: nifi-trackers
+          servicePort: 5000
+      - path: /serializer
+        backend:
+          serviceName: serializer
+          servicePort: 5000
+      - path: /*
+        backend:
+          serviceName: helloworld
+          servicePort: 5000
 
