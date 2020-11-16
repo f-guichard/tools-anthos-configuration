@@ -11,7 +11,7 @@ spec:
       paths:
       - path: /api
         backend:
-          serviceName: api
+          serviceName: api-ingress-nodeport
           servicePort: 5000
       - path: /data-logging
         backend:
