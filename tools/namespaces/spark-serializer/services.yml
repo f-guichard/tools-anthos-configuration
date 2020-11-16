@@ -1,0 +1,14 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: serializer
+  labels:
+    app: serializer
+spec:
+  ports:
+  - port: 5000
+    name: http
+  selector:
+    app: serializer
+
