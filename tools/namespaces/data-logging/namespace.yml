@@ -1,0 +1,8 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  labels:
+    istio.io/rev: asm-173-6
+    last_mod: fguichard
+  name: data-logging
