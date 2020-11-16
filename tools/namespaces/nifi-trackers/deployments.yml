@@ -1,0 +1,57 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trackers-v1
+  labels:
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: trackers
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: trackers
+        version: v1
+    spec:
+      containers:
+      - name: trackers
+        image: docker.io/istio/examples-helloworld-v1
+        resources:
+          requests:
+            cpu: "100m"
+        imagePullPolicy: IfNotPresent #Always
+        ports:
+        - containerPort: 5000
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: trackers-v2
+  labels:
+    version: v2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: trackers
+      version: v2
+  template:
+    metadata:
+      labels:
+        app: trackers
+        version: v2
+    spec:
+      containers:
+      - name: trackers
+        image: docker.io/istio/examples-helloworld-v2
+        resources:
+          requests:
+            cpu: "100m"
+        imagePullPolicy: IfNotPresent #Always
+        ports:
+        - containerPort: 5000
+
