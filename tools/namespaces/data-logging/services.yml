@@ -11,4 +11,16 @@ spec:
     name: http
   selector:
     app: data-logging
-
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ext-data-logging
+  labels:
+    app: data-logging
+spec:
+  type: ExternalName
+  externalName: data-logging.data-logging.svc.cluster.local
+  ports:
+  - port: 5000
+    name: http
