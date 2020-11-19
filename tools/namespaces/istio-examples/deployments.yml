@@ -3,6 +3,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: helloworld-v1
+  annotations:
+    configmanagement.gke.io/cluster-selector: gcp-staging-west1
   labels:
     version: v1
 spec:
