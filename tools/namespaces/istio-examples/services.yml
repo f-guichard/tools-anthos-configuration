@@ -5,6 +5,8 @@ metadata:
   name: helloworld
   labels:
     app: helloworld
+  annotations:
+    configmanagement.gke.io/managed: disabled
 spec:
   ports:
   - port: 5000
